@@ -3,7 +3,6 @@ package main
 import "fmt"
 
 func main() {
-	var r uint64
-	r = return_val(1)
-	fmt.Println(r)
+	r0, r1 := return_val(1)
+	fmt.Printf("r0 = %v, r1 = %v\n", r0, r1)
 }
