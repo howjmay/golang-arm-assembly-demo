@@ -32,3 +32,7 @@ $cd decl_array
 $go build
 $./decl_array
 ```
+
+### math
+
+Include several ARM64 implementation of math functions
