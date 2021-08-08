@@ -36,3 +36,7 @@ $./decl_array
 ### math
 
 Include several ARM64 implementation of math functions
+
+### crypto
+
+Implementation of cryptography algorithms
