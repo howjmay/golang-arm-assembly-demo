@@ -32,6 +32,8 @@ func normalize(x float64) (y float64, exp int) {
 	return x, 0
 }
 
+var FrexpGo = frexp
+
 func frexp(f float64) (frac float64, exp int) {
 	// special cases
 	mask := uint64(0x7FF)

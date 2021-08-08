@@ -1,3 +1,5 @@
-module github.com/HowJMay/golang-arm-assebmly-demo
+module github.com/HowJMay/golang-arm-assembly-demo
 
 go 1.16
+
+require golang.org/x/sys v0.0.0-20210806184541-e5e7981a1069

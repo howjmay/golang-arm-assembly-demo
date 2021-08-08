@@ -4,7 +4,7 @@ import (
 	"math"
 	"testing"
 
-	"github.com/HowJMay/golang-arm-assebmly-demo/hypot"
+	"github.com/HowJMay/golang-arm-assembly-demo/math/hypot"
 )
 
 var tanh = []float64{

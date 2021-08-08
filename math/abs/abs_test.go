@@ -4,7 +4,7 @@ import (
 	"math"
 	"testing"
 
-	"github.com/HowJMay/golang-arm-assebmly-demo/math/abs"
+	"github.com/HowJMay/golang-arm-assembly-demo/math/abs"
 )
 
 var vf = []float64{

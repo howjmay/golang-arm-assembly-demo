@@ -5,6 +5,8 @@ import (
 	"math/rand"
 	"testing"
 	"time"
+
+	"github.com/HowJMay/golang-arm-assembly-demo/math/frexp"
 )
 
 var vf = []float64{
@@ -97,7 +99,7 @@ var frexpSC = []fi{
 	{math.Inf(1), 0},
 	{math.NaN(), 0},
 }
-var frexp = []fi{
+var frexpData = []fi{
 	{6.2237649061045918750e-01, 3},
 	{9.6735905932226306250e-01, 3},
 	{-5.5376011438400318000e-01, -1},
@@ -146,8 +148,8 @@ var frexpBC = []fi{
 
 func TestFrexp(t *testing.T) {
 	for i := 0; i < len(vf); i++ {
-		if f, j := frexp.Frexp(vf[i]); !veryclose(frexp[i].f, f) || frexp[i].i != j {
-			t.Errorf("Frexp(%g) = %g, %d, want %g, %d", vf[i], f, j, frexp[i].f, frexp[i].i)
+		if f, j := frexp.Frexp(vf[i]); !veryclose(frexpData[i].f, f) || frexpData[i].i != j {
+			t.Errorf("Frexp(%g) = %g, %d, want %g, %d", vf[i], f, j, frexpData[i].f, frexpData[i].i)
 		}
 	}
 	for i := 0; i < len(vffrexpSC); i++ {
@@ -204,8 +206,6 @@ func TestFrexpSelf(t *testing.T) {
 
 	for i := 0; i < len(vffrexpBC); i++ {
 		if f, j := frexp.ArchFrexp(vffrexpBC[i]); !veryclose(frexpBC[i].f, f) || frexpBC[i].i != j {
-			_f, _j := frexp.frexp(vffrexpBC[i])
-			t.Errorf("frexp(%g) = %g, %d, want %g, %d", vffrexpBC[i], _f, _j, frexpBC[i].f, frexpBC[i].i)
 			t.Errorf("ArchFrexp(%g) = %g, %d, want %g, %d", vffrexpBC[i], f, j, frexpBC[i].f, frexpBC[i].i)
 		}
 	}
@@ -243,7 +243,7 @@ func BenchmarkFrexpGO(b *testing.B) {
 	x := 0.0
 	y := 0
 	for i := 0; i < b.N; i++ {
-		x, y = frexp.frexp(8)
+		x, y = frexp.FrexpGo(8)
 	}
 	GlobalF = x
 	GlobalI = y
